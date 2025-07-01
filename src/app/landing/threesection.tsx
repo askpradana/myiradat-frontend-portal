@@ -42,19 +42,29 @@ export default function ThreeSections() {
       <div className="space-y-16">
         {data.map((item, index) => {
           const isEven = index % 2 === 1;
+
           return (
             <div
               key={index}
-              className={`${item.bgColor} mx-auto max-w-screen-xl space-y-20  sm:px-6 p-8 rounded-2xl`}
+              className={`${
+                item.bgColor ?? "bg-brand-50"
+              } rounded-2xl px-6 sm:px-8 py-12 max-w-screen-xl mx-auto`}
             >
-              <div className={`mx-auto max-w-screen-xl grid md:grid-cols-2 items-center gap-12`}>
-                {/* Text */}
-                <div className={`${isEven ? "md:order-2 text-left" : "text-left"}`}>
-                  <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+              <div
+                className={`grid md:grid-cols-2 items-center gap-12 max-w-screen-xl mx-auto`}
+              >
+                {/* Text Content */}
+                <div className={`${isEven ? "md:order-2" : ""} text-left`}>
+                  <h2 className="text-2xl sm:text-3xl font-bold text-brand-700 mb-4">
                     {item.title}
                   </h2>
-                  <p className="text-gray-600 text-base sm:text-lg mb-6">{item.subTitle}</p>
-                  <button className="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-full font-medium transition">
+                  <p className="text-brand-300 text-base sm:text-lg mb-6">
+                    {item.subTitle}
+                  </p>
+                  <button
+                    className="bg-brand-500 hover:bg-brand-700 text-white px-6 py-2 rounded-full font-medium transition-colors duration-300"
+                    aria-label="Create my card"
+                  >
                     Create my card
                   </button>
                 </div>
@@ -64,7 +74,7 @@ export default function ThreeSections() {
                   <img
                     src={item.imageSrc}
                     alt={item.altText}
-                    className="w-full max-w-md mx-auto md:max-w-full rounded-xl shadow-lg object-cover"
+                    className="w-full max-w-md md:max-w-full mx-auto rounded-xl shadow-lg object-cover"
                   />
                 </div>
               </div>

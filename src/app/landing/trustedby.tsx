@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const TrustedCompanies = () => {
   const companies = [
@@ -16,7 +16,7 @@ const TrustedCompanies = () => {
     { name: "ZenithCorp", icon: "ZC" },
     { name: "InfinityTech", icon: "IT" },
     { name: "PulseDrive", icon: "PD" },
-    { name: "FlexCore", icon: "FC" }
+    { name: "FlexCore", icon: "FC" },
   ];
 
   // Duplicate the companies array for seamless infinite scroll
@@ -27,33 +27,28 @@ const TrustedCompanies = () => {
       <div className="max-w-6xl mx-auto text-center">
         {/* Header */}
         <div className="mb-16">
-          <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-2 leading-tight">
+          <h2 className="text-4xl md:text-5xl font-light text-brand-700 mb-2 leading-tight">
             More than 2.5 million people across
           </h2>
-          <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-12 leading-tight">
+          <h2 className="text-4xl md:text-5xl font-light text-brand-700 mb-12 leading-tight">
             500,000 companies choose us
           </h2>
         </div>
 
-        {/* Scrolling Companies Row */}
+        {/* Scrolling Companies */}
         <div className="relative overflow-hidden">
-          <div 
-            className="flex space-x-12 animate-scroll"
-            style={{
-              width: 'fit-content'
-            }}
-          >
+          <div className="flex gap-12 animate-scroll whitespace-nowrap w-fit">
             {duplicatedCompanies.map((company, index) => (
-              <div 
+              <div
                 key={index}
-                className="flex items-center space-x-3 opacity-60 hover:opacity-100 transition-opacity duration-300 whitespace-nowrap flex-shrink-0"
+                className="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity duration-300 shrink-0"
               >
-                <div className="w-8 h-8 bg-gray-200 rounded flex items-center justify-center">
-                  <span className="text-gray-600 font-medium text-sm">
+                <div className="w-8 h-8 bg-brand-100 rounded flex items-center justify-center">
+                  <span className="text-brand-700 font-medium text-sm">
                     {company.icon}
                   </span>
                 </div>
-                <span className="text-xl font-light text-gray-700 tracking-wide">
+                <span className="text-xl font-light text-brand-300 tracking-wide">
                   {company.name}
                 </span>
               </div>
@@ -71,11 +66,11 @@ const TrustedCompanies = () => {
             transform: translateX(-50%);
           }
         }
-        
+
         .animate-scroll {
           animation: scroll 30s linear infinite;
         }
-        
+
         .animate-scroll:hover {
           animation-play-state: paused;
         }
