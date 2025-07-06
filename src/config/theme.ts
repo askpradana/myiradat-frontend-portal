@@ -1,23 +1,26 @@
-import { theme } from 'antd'
+import { theme } from "antd";
 
 export const themeConfig = {
   algorithm: theme.defaultAlgorithm, // You can also use theme.darkAlgorithm
   token: {
-    colorPrimary: '#00b96b',
+    colorPrimary: "#00b96b",
     borderRadius: 8,
-    fontFamily: 'Nunito Sans, sans-serif',
+    fontFamily: "Nunito Sans, sans-serif",
     fontSize: 14,
   },
   components: {
+    Layout: {
+      siderBg: "#ffffff",
+    },
     Button: {
       controlHeight: 40,
       borderRadius: 6,
     },
     Input: {
-      colorBorder: '#ddd',
+      colorBorder: "#ddd",
     },
     Modal: {
       padding: 16,
     },
   },
-}
+};
