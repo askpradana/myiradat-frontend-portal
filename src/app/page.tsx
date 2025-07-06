@@ -1,9 +1,11 @@
 "use client";
 
-export default function Home(){
-	return(
-		<>
-			<h1>HAHAHAHAHHAHA</h1>
-		</>
-	)
+import LandingPage from "@/features/landing/LandingView";
+
+export default function Home() {
+  return (
+    <>
+      <LandingPage />
+    </>
+  );
 }
