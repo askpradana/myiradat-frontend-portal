@@ -1,4 +1,15 @@
-html, body {
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #e6eaf0;
+  --color-brand-100: #c2c9d6;
+  --color-brand-300: #7a8ba7;
+  --color-brand-500: #003049;
+  --color-brand-700: #001c2b;
+  --color-brand-900: #000d14;
+}
+
+/* html, body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -15,4 +26,4 @@ body {
   height: 32px;
   margin: 16px;
   background: rgba(255, 255, 255, 0.3);
-}
+} */
