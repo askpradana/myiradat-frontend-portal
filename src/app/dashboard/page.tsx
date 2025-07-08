@@ -3,7 +3,6 @@
 import { useAuth } from "@/context/AuthContext";
 
 export default function DashboardPage() {
-
   const { user } = useAuth();
 
   return (
