@@ -1,4 +1,3 @@
-// src/context/AuthContext.tsx
 "use client"
 
 import { createContext, useContext, useEffect, useState } from "react"
@@ -55,22 +54,27 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setUser(null)
   }
 
-  useEffect(() => {
-    const token = getAccessToken()
-    if (token) {
-      try {
-        const decoded: MyJwtPayload = jwtDecode(token)
-        setUser({
-          email: decoded.email,
-          services: decoded.services,
-        })
-      } catch {
-        clearTokens()
-        setUser(null)
-      }
+useEffect(() => {
+  const token = getAccessToken();
+
+  if (token) {
+    try {
+      const decoded: MyJwtPayload = jwtDecode(token);
+      setUser({
+        email: decoded.email,
+        services: decoded.services,
+      });
+    } catch {
+      clearTokens();
+      setUser(null);
     }
-    setLoading(false)
-  }, [])
+  } else {
+    setUser(null); 
+  }
+
+  setLoading(false);
+}, []);
+
 
   const isAuthenticated = !!user
   // const isAuthenticated = true

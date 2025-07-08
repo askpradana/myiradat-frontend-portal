@@ -22,5 +22,10 @@ export const themeConfig = {
     Modal: {
       padding: 16,
     },
+    Menu: {
+      itemSelectedColor: "#FFFFFF",
+      itemSelectedBg: "#008000",
+      menuItemBorderRadius: 16,
+    },
   },
 };
