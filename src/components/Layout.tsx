@@ -8,7 +8,7 @@ import {
   MenuUnfoldOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Button, Layout, Menu, theme } from "antd";
+import { Avatar, Button, Layout, Menu, theme, Space, Typography } from "antd";
 
 const { Header, Sider, Content } = Layout;
 
@@ -23,10 +23,17 @@ export default function DashboardLayout({
   } = theme.useToken();
 
   return (
-    <Layout>
+    <Layout className="h-screen">
       <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="flex flex-col h-screen">
-          <div className="logo-vertical p-4" />
+        <div className="flex flex-col h-full">
+          <div className="logo-vertical p-4">
+            <div className="text-center mb-6">
+              <h1 className="text-2xl font-bold">
+                <span className="text-gray-500">MY</span>
+                <span className="text-green-500">IRADAT</span>
+              </h1>
+            </div>
+          </div>
 
           {/* Menu Section */}
           <div className="flex-1 overflow-auto">
@@ -71,16 +78,30 @@ export default function DashboardLayout({
 
       <Layout>
         <Header style={{ padding: 0, background: colorBgContainer }}>
-          <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
-            style={{
-              fontSize: "16px",
-              width: 64,
-              height: 64,
-            }}
-          />
+          <div className="flex justify-between items-center">
+            {/* Collapse Button */}
+            <Button
+              type="text"
+              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+              onClick={() => setCollapsed(!collapsed)}
+              style={{
+                fontSize: "16px",
+                width: 64,
+                height: 64,
+              }}
+            />
+
+            {/* Profile Info (icon + name) */}
+            <Space className="mr-8">
+              <Avatar
+                style={{ backgroundColor: "#87d068" }}
+                icon={<UserOutlined />}
+              />
+              <Typography.Text>
+                Nuafal
+              </Typography.Text>
+            </Space>
+          </div>
         </Header>
         <Content
           style={{
