@@ -22,7 +22,7 @@ export function useLoginViewModel() {
       loginToContext(res.data.accessToken, res.data.refreshToken);
       router.replace("/dashboard");
     } catch (err) {
-      if (!("errorFields" in err)) {
+      if (err) {
         message.error("Login failed. Please check your credentials.");
         console.error(err);
       }
