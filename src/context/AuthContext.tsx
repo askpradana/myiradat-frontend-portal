@@ -72,8 +72,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setLoading(false)
   }, [])
 
-  // const isAuthenticated = !!user
-  const isAuthenticated = true
+  const isAuthenticated = !!user
+  // const isAuthenticated = true
 
   return (
     <AuthContext.Provider

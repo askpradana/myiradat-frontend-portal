@@ -1,7 +1,7 @@
 import { theme } from "antd";
 
 export const themeConfig = {
-  algorithm: theme.defaultAlgorithm, // You can also use theme.darkAlgorithm
+  algorithm: theme.defaultAlgorithm,
   token: {
     colorPrimary: "#00b96b",
     borderRadius: 8,
@@ -14,7 +14,7 @@ export const themeConfig = {
     },
     Button: {
       controlHeight: 40,
-      borderRadius: 6,
+      borderRadius: 8,
     },
     Input: {
       colorBorder: "#ddd",
