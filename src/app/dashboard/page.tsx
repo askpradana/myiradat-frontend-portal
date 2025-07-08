@@ -3,11 +3,9 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
-import { useModal } from "@/context/ModalContext";
 
 export default function DashboardPage() {
   const router = useRouter();
-  const { showSuccess } = useModal();
 
   const { isAuthenticated, user } = useAuth();
 
@@ -15,7 +13,6 @@ export default function DashboardPage() {
     if (!isAuthenticated) {
       router.replace("/");
     }
-      showSuccess("BERHASIL")
   }, [isAuthenticated]);
 
   if (!isAuthenticated) return null; // or loading spinner
