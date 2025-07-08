@@ -8,10 +8,20 @@ import {
   MenuUnfoldOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Avatar, Button, Layout, Menu, theme, Space, Typography } from "antd";
+import {
+  Avatar,
+  Button,
+  Layout,
+  Menu,
+  theme,
+  Space,
+  Typography,
+  MenuProps,
+} from "antd";
 import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
 
-const { Header, Sider, Content } = Layout;
+const { Header, Sider } = Layout;
 const { Text } = Typography;
 
 export default function DashboardLayout({
@@ -22,14 +32,20 @@ export default function DashboardLayout({
   const { user, logout } = useAuth();
   const [collapsed, setCollapsed] = useState(false);
   const {
-    token: { colorBgContainer, borderRadiusLG },
+    token: { colorBgContainer },
   } = theme.useToken();
+
+  const router = useRouter();
+
+  const handleMenuClick: MenuProps["onClick"] = ({ key }) => {
+    router.push(`/${key}`);
+  };
 
   return (
     <Layout className="h-screen">
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="flex flex-col h-full">
-          <div className="logo-vertical p-4">
+          <div className="logo-vertical">
             <div className="text-center mb-6">
               <h1 className="text-2xl font-bold flex justify-center items-center transition-all duration-300">
                 <span className="text-gray-500">MY</span>
@@ -56,6 +72,7 @@ export default function DashboardLayout({
               theme="light"
               mode="inline"
               defaultSelectedKeys={["dashboard"]}
+              onClick={handleMenuClick}
               items={[
                 {
                   key: "dashboard",
@@ -63,12 +80,12 @@ export default function DashboardLayout({
                   label: "Dashboard",
                 },
                 {
-                  key: "data",
+                  key: "dashboard/data",
                   icon: <ClockCircleOutlined />,
                   label: "Data",
                 },
                 {
-                  key: "profile",
+                  key: "dashboard/profile",
                   icon: <UserOutlined />,
                   label: "Profile",
                 },
@@ -124,18 +141,7 @@ export default function DashboardLayout({
             </Space>
           </div>
         </Header>
-        <Content
-          style={{
-            margin: "24px 16px",
-            padding: 24,
-            height: "calc(100vh - 64px)",
-            overflow: "auto",
-            background: colorBgContainer,
-            borderRadius: borderRadiusLG,
-          }}
-        >
-          {children}
-        </Content>
+        {children}
       </Layout>
     </Layout>
   );

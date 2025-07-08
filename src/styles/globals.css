@@ -11,9 +11,9 @@
 
 .logo-vertical {
   height: 64px;
-  padding: 16px;
   background: rgba(255, 255, 255, 0.3);
-  border-inline-end: 1px solid rgba(5,5,5,0.06)
+  border-inline-end: 1px solid rgba(5,5,5,0.06);
+  padding: 16px;
 }
 
 .ant-menu .ant-menu-item {
@@ -24,9 +24,3 @@
 .logout-button{
   border-radius: 20px;
 }
-
-.logo-vertical {
-  height: 32px;
-  margin: 16px;
-  background: rgba(255, 255, 255, 0.3);
-} 
