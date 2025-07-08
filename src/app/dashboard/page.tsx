@@ -1,13 +1,10 @@
 "use client";
 
-import { useAuth } from "@/context/AuthContext";
+import DashboardView from "@/features/dashboard/DashboardView";
 
 export default function DashboardPage() {
-  const { user } = useAuth();
 
   return (
-    <div>
-      <h1>Welcome, {user?.email}</h1>
-    </div>
+    <DashboardView/>
   );
 }
