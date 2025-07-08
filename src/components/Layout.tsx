@@ -1,11 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import {
+  ClockCircleOutlined,
+  HomeOutlined,
+  LogoutOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  UploadOutlined,
   UserOutlined,
-  VideoCameraOutlined,
 } from "@ant-design/icons";
 import { Button, Layout, Menu, theme } from "antd";
 
@@ -24,30 +25,50 @@ export default function DashboardLayout({
   return (
     <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="logo-vertical" />
-        <Menu
-          theme="light"
-          mode="inline"
-          defaultSelectedKeys={["1"]}
-          items={[
-            {
-              key: "1",
-              icon: <UserOutlined />,
-              label: "nav 1",
-            },
-            {
-              key: "2",
-              icon: <VideoCameraOutlined />,
-              label: "nav 2",
-            },
-            {
-              key: "3",
-              icon: <UploadOutlined />,
-              label: "nav 3",
-            },
-          ]}
-        />
+        <div className="flex flex-col h-screen">
+          <div className="logo-vertical p-4" />
+
+          {/* Menu Section */}
+          <div className="flex-1 overflow-auto">
+            <Menu
+              theme="light"
+              mode="inline"
+              defaultSelectedKeys={["dashboard"]}
+              items={[
+                {
+                  key: "dashboard",
+                  icon: <HomeOutlined />,
+                  label: "Dashboard",
+                },
+                {
+                  key: "data",
+                  icon: <ClockCircleOutlined />,
+                  label: "Data",
+                },
+                {
+                  key: "profile",
+                  icon: <UserOutlined />,
+                  label: "Profile",
+                },
+              ]}
+            />
+          </div>
+
+          {/* Logout Button - fixed at bottom */}
+          <div className="p-4">
+            <Button
+              type="primary"
+              icon={<LogoutOutlined />}
+              danger
+              block
+              className="logout-button"
+            >
+              {!collapsed && "Logout"}
+            </Button>
+          </div>
+        </div>
       </Sider>
+
       <Layout>
         <Header style={{ padding: 0, background: colorBgContainer }}>
           <Button
