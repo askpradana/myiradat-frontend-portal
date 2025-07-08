@@ -1,7 +1,7 @@
 'use client';
 
 import { LoginFormData, LoginResponse } from './LoginModel';
-import { useFetcher } from '@/lib/fetcher';
+import { useFetcher } from '@/lib/fetcher/fetcher';
 
 export function useLoginService() {
   const { fetcher } = useFetcher();

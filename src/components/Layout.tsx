@@ -9,14 +9,17 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import { Avatar, Button, Layout, Menu, theme, Space, Typography } from "antd";
+import { useAuth } from "@/context/AuthContext";
 
 const { Header, Sider, Content } = Layout;
+const { Text } = Typography;
 
 export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const { user, logout } = useAuth();
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -28,9 +31,21 @@ export default function DashboardLayout({
         <div className="flex flex-col h-full">
           <div className="logo-vertical p-4">
             <div className="text-center mb-6">
-              <h1 className="text-2xl font-bold">
+              <h1 className="text-2xl font-bold flex justify-center items-center transition-all duration-300">
                 <span className="text-gray-500">MY</span>
-                <span className="text-green-500">IRADAT</span>
+                <span
+                  className={`
+                              text-green-500 overflow-hidden transition-all duration-600
+                              ${
+                                collapsed
+                                  ? "w-0 opacity-0 scale-95"
+                                  : "w-auto opacity-100 scale-100 ml-1"
+                              }
+                            `}
+                  style={{ display: "inline-block", transitionProperty: "all" }}
+                >
+                  IRADAT
+                </span>
               </h1>
             </div>
           </div>
@@ -68,6 +83,7 @@ export default function DashboardLayout({
               icon={<LogoutOutlined />}
               danger
               block
+              onClick={logout}
               className="logout-button"
             >
               {!collapsed && "Logout"}
@@ -92,14 +108,19 @@ export default function DashboardLayout({
             />
 
             {/* Profile Info (icon + name) */}
-            <Space className="mr-8">
+            <Space className="mr-8" size="middle">
               <Avatar
                 style={{ backgroundColor: "#87d068" }}
                 icon={<UserOutlined />}
               />
-              <Typography.Text>
-                Nuafal
-              </Typography.Text>
+              <div className="flex flex-col">
+                <Text strong type="success" className="text-lg">
+                  {user?.email}
+                </Text>
+                <Text strong type="secondary" className="text-lg">
+                  {user?.services[0].roleName}
+                </Text>
+              </div>
             </Space>
           </div>
         </Header>
