@@ -42,6 +42,8 @@ export default function DashboardLayout({
     router.push(`/${key}`);
   };
 
+  const userRole = user?.services.find((s) => s.serviceName == "Dashboard")
+
   useEffect(() => {
     const resize = () => {
       setSiderWidth(window.innerWidth);
@@ -159,7 +161,7 @@ export default function DashboardLayout({
                   {user?.email}
                 </Text>
                 <Text strong type="secondary" className="text-lg">
-                  {user?.services[0].roleName}
+                  {userRole?.roleName}
                 </Text>
               </div>
             </Space>
