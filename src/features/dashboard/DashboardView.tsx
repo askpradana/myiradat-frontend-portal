@@ -1,7 +1,12 @@
 "use client";
 
-import { Card, Col, Layout, Row } from "antd";
-import { AuditOutlined } from "@ant-design/icons";
+import { Avatar, Card, Col, Layout, Row } from "antd";
+import {
+  CarryOutFilled,
+  DatabaseFilled,
+  PieChartFilled,
+  ProductFilled,
+} from "@ant-design/icons";
 import { useAuth } from "@/context/AuthContext";
 
 const { Content } = Layout;
@@ -27,16 +32,45 @@ export default function DashboardView() {
             >
               <div className="flex justify-between items-center">
                 <div>
-                  <div className="text-gray-500 text-sm mb-1">{service.roleName}</div>
+                  <div className="text-gray-500 text-sm mb-1">
+                    {service.roleName}
+                  </div>
                   <div className="text-xl font-semibold text-black">
                     {service.serviceName}
                   </div>
                 </div>
-                <div className="bg-green-100 rounded-xl p-3">
-                  <AuditOutlined
-                    style={{ fontSize: "24px", color: "#7C3AED" }}
+                {service.serviceName == "Dashboard" && (
+                  <Avatar
+                    shape="square"
+                    style={{ background: "#8280FF26", color: "#3D42DF" }}
+                    size={48}
+                    icon={<PieChartFilled />}
                   />
-                </div>
+                )}
+                {service.serviceName == "IPROB" && (
+                  <Avatar
+                    shape="square"
+                    style={{ background: "#FEC53D26", color: "#FEC53D" }}
+                    size={48}
+                    icon={<DatabaseFilled />}
+                  />
+                )}
+                {service.serviceName == "IPROS" && (
+                  <Avatar
+                    shape="square"
+                    style={{ background: "#4AD99126", color: "#4AD991" }}
+                    size={48}
+                    icon={<ProductFilled />}
+                  />
+                )}
+                {service.serviceName == "Improve Care" && (
+                  <Avatar
+                    shape="square"
+                    style={{ background: "#87d06826", color: "#87d068" }}
+                    size={48}
+                    icon={<CarryOutFilled />}
+                  />
+                )}
               </div>
             </Card>
           </Col>
