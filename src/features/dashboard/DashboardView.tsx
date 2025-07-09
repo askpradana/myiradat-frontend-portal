@@ -2,13 +2,10 @@
 
 import { Avatar, Card, Col, Layout, Row } from "antd";
 import {
-  AuditOutlined,
   CarryOutFilled,
   DatabaseFilled,
-  DatabaseOutlined,
   PieChartFilled,
   ProductFilled,
-  UserOutlined,
 } from "@ant-design/icons";
 import { useAuth } from "@/context/AuthContext";
 
