@@ -1,11 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ClockCircleOutlined,
   HomeOutlined,
-  LogoutOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
+  PoweroffOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 import {
@@ -31,6 +31,7 @@ export default function DashboardLayout({
 }) {
   const { user, logout } = useAuth();
   const [collapsed, setCollapsed] = useState(false);
+  const [siderWidth, setSiderWidth] = useState(310);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -41,9 +42,27 @@ export default function DashboardLayout({
     router.push(`/${key}`);
   };
 
+  useEffect(() => {
+    const resize = () => {
+      setSiderWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", resize);
+    resize();
+    return () => {
+      window.removeEventListener("resize", resize);
+    };
+  }, []);
+
   return (
     <Layout className="h-screen">
-      <Sider trigger={null} collapsible collapsed={collapsed}>
+      <Sider
+        breakpoint="lg"
+        collapsedWidth={siderWidth <= 768 ? 0 : 140}
+        trigger={null}
+        collapsible
+        collapsed={collapsed}
+        width={siderWidth <= 768 ? siderWidth : 310}
+      >
         <div className="flex flex-col h-full">
           <div className="logo-vertical">
             <div className="text-center mb-6">
@@ -72,7 +91,12 @@ export default function DashboardLayout({
               theme="light"
               mode="inline"
               defaultSelectedKeys={["dashboard"]}
-              onClick={handleMenuClick}
+              onClick={(e) => {
+                handleMenuClick(e);
+                if (siderWidth <= 768) {
+                  setCollapsed(!collapsed);
+                }
+              }}
               items={[
                 {
                   key: "dashboard",
@@ -97,7 +121,7 @@ export default function DashboardLayout({
           <div className="p-4">
             <Button
               type="primary"
-              icon={<LogoutOutlined />}
+              icon={<PoweroffOutlined />}
               danger
               block
               onClick={logout}
