@@ -4,6 +4,7 @@ import { Card, Space, Table, Input, Button, Pagination } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import type { TableProps } from "antd";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 const { Search } = Input;
 
 interface DataType {
@@ -118,6 +119,12 @@ const data: DataType[] = [
 ];
 
 export default function AdminDashboardView() {
+
+    const router = useRouter();
+  
+    const handleClick = () => {
+        router.push(`/dashboard/admin/add`);
+    };
   return (
     <Card
       title={
@@ -125,6 +132,7 @@ export default function AdminDashboardView() {
           <Button
             type="primary"
             icon={<PlusOutlined />}
+            onClick={handleClick}
             className="w-full md:w-auto"
           >
             Tambah User
