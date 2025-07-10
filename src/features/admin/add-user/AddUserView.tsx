@@ -23,6 +23,10 @@ interface FormValues {
   }[];
 }
 
+interface FormFields extends Omit<FormValues, "services"> {
+  [key: `role_${number}`]: number;
+}
+
 const availableServices: ServiceOption[] = [
   {
     serviceName: "IPRO",
@@ -50,7 +54,7 @@ const UserForm = () => {
   const [form] = Form.useForm();
   const [selectedServices, setSelectedServices] = useState<number[]>([]);
 
-  const onFinish = (values: any) => {
+  const onFinish = (values: FormFields) => {
     const finalData: FormValues = {
       name: values.name,
       email: values.email,

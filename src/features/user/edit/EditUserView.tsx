@@ -2,6 +2,12 @@
 
 import { Card, Form, Input, Button, Row, Col } from "antd";
 
+interface UserFormValues {
+  name: string;
+  email: string;
+  no_hp: string;
+}
+
 const EditUserView = () => {
   const [form] = Form.useForm();
 
@@ -11,7 +17,7 @@ const EditUserView = () => {
     no_hp: "081234567890",
   };
 
-  const handleSubmit = (values: any) => {
+  const handleSubmit = (values: UserFormValues) => {
     console.log("Updated User Data:", values);
   };
 
