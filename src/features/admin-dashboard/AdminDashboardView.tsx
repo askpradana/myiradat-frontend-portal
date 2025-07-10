@@ -3,6 +3,7 @@
 import { Card, Space, Table, Input, Button, Pagination } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import type { TableProps } from "antd";
+import Link from "next/link";
 const { Search } = Input;
 
 interface DataType {
@@ -10,6 +11,7 @@ interface DataType {
   name: string;
   email: string;
   no_hp: string;
+  id: number
 }
 
 const columns: TableProps<DataType>["columns"] = [
@@ -32,9 +34,11 @@ const columns: TableProps<DataType>["columns"] = [
   {
     title: "Action",
     key: "action",
-    render: () => (
+    render: (_, record) => (
       <Space size="middle">
-        <a>Detail</a>
+        <Link href={`/dashboard/admin/detail/${record.id}`}>
+          Detail
+        </Link>
       </Space>
     ),
   },
@@ -43,60 +47,70 @@ const columns: TableProps<DataType>["columns"] = [
 const data: DataType[] = [
   {
     key: "1",
+    id: 1,
     name: "Putra Iradat",
     email: "putra.iradat@example.com",
     no_hp: "+6281111111111",
   },
   {
     key: "2",
+    id: 2,
     name: "Rani Mulyani",
     email: "rani.mulyani@example.com",
     no_hp: "+6281222222222",
   },
   {
     key: "3",
+    id: 3,
     name: "Fajar Pratama",
     email: "fajar.pratama@example.com",
     no_hp: "+6281333333333",
   },
   {
     key: "4",
+    id: 4,
     name: "Dina Kartika",
     email: "dina.kartika@example.com",
     no_hp: "+6281444444444",
   },
   {
     key: "5",
+    id: 5,
     name: "Agus Salim",
     email: "agus.salim@example.com",
     no_hp: "+6281555555555",
   },
   {
     key: "6",
+    id: 6,
     name: "Lina Maharani",
     email: "lina.maharani@example.com",
     no_hp: "+6281666666666",
   },
   {
     key: "7",
+    id: 7,
     name: "Rizky Saputra",
     email: "rizky.saputra@example.com",
     no_hp: "+6281777777777",
   },
   {
     key: "8",
+    id: 8,
     name: "Sari Wulandari",
     email: "sari.wulandari@example.com",
     no_hp: "+6281888888888",
   },
   {
     key: "9",
+    id: 9,
     name: "Andi Nugroho",
     email: "andi.nugroho@example.com",
     no_hp: "+6281999999999",
   },
   {
     key: "10",
+    id: 10,
     name: "Mega Sari",
     email: "mega.sari@example.com",
     no_hp: "+6281000000000",
