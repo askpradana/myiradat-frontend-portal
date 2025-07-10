@@ -1,4 +1,6 @@
-import { Card, Row, Col, Statistic, List } from "antd";
+import { Card, Descriptions } from "antd";
+import dayjs from "dayjs";
+import "dayjs/locale/id";
 
 const UserTestCards = () => {
   const data = {
@@ -11,8 +13,8 @@ const UserTestCards = () => {
       consult_date: "2025-07-09",
       latest_analysis_result: "2025-07-08",
       latest_comments: [
-        { id: 0, comment: "" },
-        { id: 0, comment: "" },
+        { id: 0, comment: "Baik" },
+        { id: 0, comment: "Baik" },
       ],
     },
     tests: {
@@ -86,77 +88,101 @@ const UserTestCards = () => {
     },
   };
 
-const renderResultList = (result: Record<string, string>) => (
-  <List
-    itemLayout="horizontal"
-    dataSource={Object.entries(result)}
-    renderItem={([key, value]) => (
-      <List.Item>
-        <List.Item.Meta
-          title={key.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())}
-          description={value || "Belum ada hasil"}
-        />
-      </List.Item>
-    )}
-  />
-);
+  const renderConsults = (consults: {
+    consult_date: string;
+    latest_analysis_result: string;
+    latest_comments: { id: number; comment: string }[];
+  }) => (
+    <Descriptions
+      bordered
+      size="small"
+      column={1}
+      labelStyle={{
+        fontWeight: "bold",
+        textTransform: "capitalize",
+        width: 200,
+      }}
+    >
+      <Descriptions.Item label="Tanggal Konsultasi" className="bg-green-100">
+        {dayjs(consults.consult_date).format("DD MMMM YYYY")}
+      </Descriptions.Item>
+
+      <Descriptions.Item label="Analisis Terakhir" className="bg-green-100">
+        {dayjs(consults.latest_analysis_result).format("DD MMMM YYYY")}
+      </Descriptions.Item>
+
+      {consults.latest_comments.map((item, index) => (
+        <Descriptions.Item key={index} label={`Komentar ${index + 1}`}>
+          {item.comment?.trim() || "Komentar kosong"}
+        </Descriptions.Item>
+      ))}
+    </Descriptions>
+  );
+
+  const renderResultDescription = (
+    result: Record<string, string>,
+    testDate: string
+  ) => (
+    <Descriptions
+      bordered
+      size="small"
+      layout="horizontal"
+      column={1}
+      labelStyle={{
+        fontWeight: "bold",
+        textTransform: "capitalize",
+        width: 200,
+      }}
+    >
+      <Descriptions.Item label="Tanggal Tes" className="bg-green-100">
+        {dayjs(testDate).format("DD MMMM YYYY")}
+      </Descriptions.Item>
+
+      {Object.entries(result).map(([key, value]) => (
+        <Descriptions.Item
+          key={key}
+          label={key
+            .replace(/_/g, " ")
+            .replace(/\b\w/g, (c) => c.toUpperCase())}
+        >
+          {value || "Belum ada hasil"}
+        </Descriptions.Item>
+      ))}
+    </Descriptions>
+  );
 
   return (
     <>
       {/* Consults */}
-      <Card title="Consults" className="shadow-md mb-6">
-        <Row gutter={16}>
-          <Col span={8}>
-            <Statistic
-              title="Tanggal Konsultasi"
-              value={data.consults.consult_date}
-            />
-          </Col>
-          <Col span={8}>
-            <Statistic
-              title="Analisis Terakhir"
-              value={data.consults.latest_analysis_result}
-            />
-          </Col>
-        </Row>
-        <List
-          itemLayout="horizontal"
-          dataSource={data.consults.latest_comments}
-          renderItem={(item, index) => (
-            <List.Item>
-              <List.Item.Meta
-                title={`Komentar ${index + 1}`}
-                description={
-                  item.comment?.trim() ? item.comment : "Komentar kosong"
-                }
-              />
-            </List.Item>
-          )}
-        />
+      <Card
+        title="IMPROVE CARE"
+        className="shadow-md m-4"
+      >
+        {renderConsults(data.consults)}
       </Card>
 
       {/* IPro */}
-      <Card title="IPro" className="shadow-md" style={{ marginTop: "24px" }}>
-        <p>
-          <strong>Tanggal Tes:</strong> {data.tests.ipro.test_taken_date}
-        </p>
-        {renderResultList(data.tests.ipro.result)}
+      <Card title="IPRO" className="shadow-md" style={{ marginTop: "24px" }}>
+        {renderResultDescription(
+          data.tests.ipro.result,
+          data.tests.ipro.test_taken_date
+        )}
       </Card>
 
       {/* IProb */}
-      <Card title="IProb" className="shadow-md" style={{ marginTop: "24px" }}>
-        <p>
-          <strong>Tanggal Tes:</strong> {data.tests.iprob.test_taken_date}
-        </p>
-        {renderResultList(data.tests.iprob.result)}
+      <Card title="IPROB" className="shadow-md" style={{ marginTop: "24px" }}>
+        {renderResultDescription(
+          data.tests.iprob.result,
+          data.tests.iprob.test_taken_date
+        )}
       </Card>
 
       {/* IPros */}
-      <Card title="IPros" className="shadow-md" style={{ marginTop: "24px" }}>
-        <p>
-          <strong>Tanggal Tes:</strong> {data.tests.ipros.test_taken_date}
-        </p>
-        {renderResultList(data.tests.ipros.result)}
+      <Card title="IPROS" className="shadow-md" style={{ marginTop: "24px" }}>
+        {renderResultDescription(
+          data.tests.ipros.result,
+          data.tests.ipros.test_taken_date
+        )}
       </Card>
     </>
   );
