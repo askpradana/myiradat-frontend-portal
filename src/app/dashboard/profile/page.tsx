@@ -1,6 +1,6 @@
 "use client";
 
-import ProfileView from "@/features/profile/ProfileView";
+import ProfileView from "@/features/user/profile/ProfileView";
 
 export default function ProfilePage() {
 

@@ -23,8 +23,8 @@ const DetailUser: React.FC<DetailUserProps> = ({
   const router = useRouter();
 
   const handleEdit = () => {
-    if (isEdit && url && user.id) {
-      router.push(`${url}/${user.id}`);
+    if (isEdit && url) {
+      router.push(`${url}`);
     }
   };
 

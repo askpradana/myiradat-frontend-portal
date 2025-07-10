@@ -1,6 +1,6 @@
 "use client";
 
-import DashboardView from "@/features/dashboard/DashboardView";
+import DashboardView from "@/features/user/dashboard/DashboardView";
 
 export default function DashboardPage() {
 

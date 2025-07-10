@@ -65,10 +65,6 @@ const UserForm = () => {
     console.log("Final Payload:", finalData);
   };
 
-  const handleServiceChange = (checkedValues: number[]) => {
-    setSelectedServices(checkedValues);
-  };
-
   return (
     <Card title="Tambah User" className="shadow-md">
       <Form
