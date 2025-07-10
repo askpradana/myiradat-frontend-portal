@@ -21,7 +21,7 @@ import {
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 
-const { Header, Sider } = Layout;
+const { Header, Sider, Content } = Layout;
 const { Text } = Typography;
 
 export default function DashboardLayout({
@@ -42,7 +42,7 @@ export default function DashboardLayout({
     router.push(`/${key}`);
   };
 
-  const userRole = user?.services.find((s) => s.serviceName == "Dashboard")
+  const userRole = user?.services.find((s) => s.serviceName == "Dashboard");
 
   useEffect(() => {
     const resize = () => {
@@ -167,7 +167,15 @@ export default function DashboardLayout({
             </Space>
           </div>
         </Header>
-        {children}
+        <Content
+          style={{
+            padding: 24,
+            height: "calc(100vh - 64px)",
+            overflow: "auto",
+          }}
+        >
+          {children}
+        </Content>
       </Layout>
     </Layout>
   );

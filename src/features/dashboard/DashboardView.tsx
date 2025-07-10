@@ -1,6 +1,6 @@
 "use client";
 
-import { Avatar, Card, Col, Layout, Row } from "antd";
+import { Avatar, Card, Col, Row } from "antd";
 import {
   CarryOutFilled,
   DatabaseFilled,
@@ -9,26 +9,14 @@ import {
 } from "@ant-design/icons";
 import { useAuth } from "@/context/AuthContext";
 
-const { Content } = Layout;
-
 export default function DashboardView() {
   const { user } = useAuth();
   return (
-    <Content
-      style={{
-        padding: 24,
-        height: "calc(100vh - 64px)",
-        overflow: "auto",
-      }}
-    >
       <Row gutter={[16, 24]}>
         {user?.services?.map((service, index) => (
           <Col key={index} md={12} xs={24} lg={8}>
             <Card
-              style={{
-                borderRadius: "1rem",
-                boxShadow: "0 10px 20px rgba(0, 0, 0, 0.10)",
-              }}
+              className="shadow-md"
             >
               <div className="flex justify-between items-center">
                 <div>
@@ -76,6 +64,5 @@ export default function DashboardView() {
           </Col>
         ))}
       </Row>
-    </Content>
   );
 }

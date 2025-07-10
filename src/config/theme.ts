@@ -14,7 +14,7 @@ export const themeConfig = {
     },
     Button: {
       controlHeight: 40,
-      borderRadius: 8,
+      borderRadius: 20,
     },
     Input: {
       colorBorder: "#ddd",
@@ -27,5 +27,8 @@ export const themeConfig = {
       itemSelectedBg: "#008000",
       menuItemBorderRadius: 16,
     },
+    Card: {
+      
+    }
   },
 };
