@@ -2,7 +2,7 @@ import { Card, Descriptions } from "antd";
 import dayjs from "dayjs";
 import "dayjs/locale/id";
 
-const UserTestCards = () => {
+const DataView = () => {
   const data = {
     profile: {
       email: "user@example.com",
@@ -13,76 +13,88 @@ const UserTestCards = () => {
       consult_date: "2025-07-09",
       latest_analysis_result: "2025-07-08",
       latest_comments: [
-        { id: 0, comment: "Baik" },
-        { id: 0, comment: "Baik" },
+        { id: 0, comment: "Hasil analisa cukup baik untuk tahap awal." },
+        {
+          id: 1,
+          comment: "Kemampuan komunikasi menunjukkan perkembangan positif.",
+        },
       ],
     },
     tests: {
       ipros: {
         test_taken_date: "2025-07-01",
         result: {
-          hubugan_interpersonal: "Cukup Baik",
-          kecepatan_perseptual: "Baik",
-          kecerdasan_umun: "Sangat Baik",
-          kemandirian: "Baik",
-          ketangguhan: "Kurang",
-          ketelitian_kerja: "Cukup",
-          motivasi_berprestasi: "Tinggi",
-          penalaran_non_verbal: "Baik",
-          penalaran_numerik: "Baik",
-          penalaran_verbal: "Sangat Baik",
-          penyesuain_diri: "Baik",
-          sistematika_kerja: "Cukup",
+          hubugan_interpersonal: "Mampu bekerja sama dalam tim dengan baik.",
+          kecepatan_perseptual: "Merespons informasi secara cepat dan tepat.",
+          kecerdasan_umun:
+            "Berpikir logis dan sistematis dalam menyelesaikan tugas.",
+          kemandirian: "Dapat mengambil keputusan tanpa banyak arahan.",
+          ketangguhan: "Tahan terhadap tekanan kerja dalam jangka waktu lama.",
+          ketelitian_kerja: "Memperhatikan detail dan minim kesalahan.",
+          motivasi_berprestasi:
+            "Memiliki semangat tinggi untuk mencapai target.",
+          penalaran_non_verbal: "Mampu memahami pola dan bentuk secara visual.",
+          penalaran_numerik: "Cukup baik dalam mengolah data angka dan logika.",
+          penalaran_verbal: "Komunikatif dan mudah memahami instruksi lisan.",
+          penyesuain_diri: "Fleksibel terhadap perubahan lingkungan kerja.",
+          sistematika_kerja:
+            "Menata pekerjaan dengan urutan yang jelas dan efisien.",
         },
       },
       iprob: {
         test_taken_date: "2025-07-01",
         result: {
-          kecerdasan_umum: "Baik",
-          daya_analisa_sintesa: "Cukup",
-          daya_berpikir_abtrak: "Kurang",
-          logika_berpikir: "Baik",
-          kelincahan_pikir: "Baik",
-          inisiatif: "Tinggi",
-          perencanaan_dan_perorganisasian: "Cukup",
-          sistematika_kerja: "Kurang",
-          fleksibilitas: "Baik",
-          daya_tahan_kerja_rutin: "Tinggi",
-          daya_tahan_kerja_stress: "Sedang",
-          stabilitas_emosi: "Baik",
-          penyesuaian_diri: "Cukup",
-          hubungan_interpersonal: "Kurang",
-          kerjasama: "Baik",
-          kepercayaan_diri: "Baik",
-          kepemimpinan: "Sedang",
-          pengambilan_keputusan: "Baik",
-          motivasi_berprestasi: "Tinggi",
-          komitmen_tugas: "Tinggi",
+          kecerdasan_umum: "Cepat memahami konsep baru dan logis.",
+          daya_analisa_sintesa:
+            "Menganalisa informasi dan menyimpulkan dengan baik.",
+          daya_berpikir_abtrak: "Mampu memahami konsep yang tidak konkret.",
+          logika_berpikir: "Memiliki pola pikir logis dan terstruktur.",
+          kelincahan_pikir:
+            "Responsif terhadap perubahan informasi secara cepat.",
+          inisiatif: "Mampu memulai tindakan tanpa harus disuruh.",
+          perencanaan_dan_perorganisasian:
+            "Mengatur tugas dengan rencana yang jelas.",
+          sistematika_kerja: "Proses kerja tersusun dan tidak terburu-buru.",
+          fleksibilitas: "Menyesuaikan diri dalam berbagai situasi kerja.",
+          daya_tahan_kerja_rutin: "Tetap konsisten meskipun tugas monoton.",
+          daya_tahan_kerja_stress: "Stabil saat menghadapi tekanan tinggi.",
+          stabilitas_emosi: "Mengendalikan emosi dalam situasi sulit.",
+          penyesuaian_diri: "Cepat beradaptasi terhadap perubahan.",
+          hubungan_interpersonal:
+            "Bersosialisasi dengan baik di lingkungan kerja.",
+          kerjasama: "Memberikan kontribusi aktif dalam tim.",
+          kepercayaan_diri: "Percaya pada kemampuan diri sendiri.",
+          kepemimpinan: "Dapat mengarahkan orang lain secara efektif.",
+          pengambilan_keputusan:
+            "Memilih tindakan terbaik dalam waktu singkat.",
+          motivasi_berprestasi: "Bersemangat mengejar hasil maksimal.",
+          komitmen_tugas: "Selalu menyelesaikan pekerjaan tepat waktu.",
         },
       },
       ipro: {
         test_taken_date: "2025-07-01",
         result: {
-          kecerdasan_umum: "Cukup",
-          daya_analisa_sintesa: "Baik",
-          daya_berpikir_abtrak: "Cukup",
-          logika_berpikir: "Kurang",
-          kelincahan_pikir: "Baik",
-          inisiatif: "Sedang",
-          perencanaan_dan_perorganisasian: "Kurang",
-          sistematika_kerja: "Kurang",
-          fleksibilitas: "Cukup",
-          daya_tahan_kerja_rutin: "Baik",
-          daya_tahan_kerja_stress: "Baik",
-          stabilitas_emosi: "Baik",
-          penyesuaian_diri: "Sedang",
-          hubungan_interpersonal: "Cukup",
-          kerjasama: "Kurang",
-          kepercayaan_diri: "Tinggi",
-          kepemimpinan: "Sedang",
-          pengambilan_keputusan: "Cukup",
-          motivasi_berprestasi: "Tinggi",
-          komitmen_tugas: "Sedang",
+          kecerdasan_umum: "Memiliki tingkat kecerdasan di atas rata-rata.",
+          daya_analisa_sintesa: "Analisa cepat dan mampu menyatukan informasi.",
+          daya_berpikir_abtrak: "Memahami simbol dan pola secara efisien.",
+          logika_berpikir: "Berpikir dengan urutan dan alasan yang jelas.",
+          kelincahan_pikir: "Cepat dalam mengubah pendekatan saat diperlukan.",
+          inisiatif: "Selalu mengambil langkah proaktif terlebih dahulu.",
+          perencanaan_dan_perorganisasian:
+            "Rencana kerja tertata dan realistis.",
+          sistematika_kerja: "Tugas diselesaikan berdasarkan prioritas logis.",
+          fleksibilitas: "Menyesuaikan strategi kerja sesuai situasi.",
+          daya_tahan_kerja_rutin: "Konsisten walau pekerjaan berulang.",
+          daya_tahan_kerja_stress: "Mampu bekerja dengan tenang saat deadline.",
+          stabilitas_emosi: "Tidak mudah terpancing emosi saat tertekan.",
+          penyesuaian_diri: "Cepat berbaur di lingkungan baru.",
+          hubungan_interpersonal: "Menjaga hubungan baik dengan rekan kerja.",
+          kerjasama: "Aktif mendukung tim dalam menyelesaikan proyek.",
+          kepercayaan_diri: "Yakin dengan kemampuan dan keputusan pribadi.",
+          kepemimpinan: "Mampu membimbing dan memberi arahan tim.",
+          pengambilan_keputusan: "Efektif dalam memilih solusi terbaik.",
+          motivasi_berprestasi: "Berusaha maksimal untuk pencapaian kerja.",
+          komitmen_tugas: "Dedikasi tinggi terhadap tanggung jawabnya.",
         },
       },
     },
@@ -128,6 +140,7 @@ const UserTestCards = () => {
       size="small"
       layout="horizontal"
       column={1}
+      className="custom-description"
       labelStyle={{
         fontWeight: "bold",
         textTransform: "capitalize",
@@ -154,10 +167,7 @@ const UserTestCards = () => {
   return (
     <>
       {/* Consults */}
-      <Card
-        title="IMPROVE CARE"
-        className="shadow-md m-4"
-      >
+      <Card title="IMPROVE CARE" className="shadow-md m-4">
         {renderConsults(data.consults)}
       </Card>
 
@@ -188,4 +198,4 @@ const UserTestCards = () => {
   );
 };
 
-export default UserTestCards;
+export default DataView;

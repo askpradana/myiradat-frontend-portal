@@ -13,11 +13,14 @@ export const themeConfig = {
       siderBg: "#ffffff",
     },
     Button: {
-      controlHeight: 40,
       borderRadius: 20,
+      borderRadiusLG: 20,
+      controlHeightLG: 40,
     },
     Input: {
       colorBorder: "#ddd",
+      borderRadius: 20,
+      borderRadiusLG: 20,
     },
     Modal: {
       padding: 16,
@@ -27,8 +30,5 @@ export const themeConfig = {
       itemSelectedBg: "#008000",
       menuItemBorderRadius: 16,
     },
-    Card: {
-      
-    }
   },
 };

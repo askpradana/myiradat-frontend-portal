@@ -100,6 +100,11 @@ export default function DashboardLayout({
                 }
               }}
               items={[
+                            {
+                  key: "dashboard/admin",
+                  icon: <HomeOutlined />,
+                  label: "Admin Dashboard",
+                },
                 {
                   key: "dashboard",
                   icon: <HomeOutlined />,
