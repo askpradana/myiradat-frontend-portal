@@ -1,6 +1,6 @@
 import DetailUser from "@/components/DetailUser";
 
-const ProfileView = () => {
+const DetailUserView = () => {
   const user = {
     id: 1,
     name: "Alexa Rawles",
@@ -9,13 +9,7 @@ const ProfileView = () => {
     avatarUrl: "/avatar-placeholder.png", // ganti dengan URL gambar nyata jika ada
   };
 
-  return (
-    <DetailUser
-    user={user}
-    isEdit
-    url="/dashboard/profile/edit"
-    />
-  );
+  return <DetailUser user={user} isEdit={false}/>;
 };
 
-export default ProfileView;
+export default DetailUserView;

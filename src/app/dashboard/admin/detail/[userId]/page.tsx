@@ -1,10 +1,10 @@
 "use client";
 
-import ProfileView from "@/features/profile/ProfileView";
+import DetailUserView from "@/features/admin/detail-user/DetailUserView";
 
 export default function ProfilePage() {
 
   return (
-    <ProfileView/>
+    <DetailUserView/>
   );
 }
