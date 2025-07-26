@@ -42,7 +42,7 @@ export default function DashboardLayout({
     router.push(`/${key}`);
   };
 
-  const userRole = user?.services.find((s) => s.serviceName == "Dashboard");
+  const userRole = user?.services.find((s) => s.serviceCode == "DASHBOARD");
 
   useEffect(() => {
     const resize = () => {
@@ -99,28 +99,33 @@ export default function DashboardLayout({
                   setCollapsed(!collapsed);
                 }
               }}
-              items={[
-                            {
-                  key: "dashboard/admin",
-                  icon: <HomeOutlined />,
-                  label: "Admin Dashboard",
-                },
-                {
-                  key: "dashboard",
-                  icon: <HomeOutlined />,
-                  label: "Dashboard",
-                },
-                {
-                  key: "dashboard/data",
-                  icon: <ClockCircleOutlined />,
-                  label: "Data",
-                },
-                {
-                  key: "dashboard/profile",
-                  icon: <UserOutlined />,
-                  label: "Profile",
-                },
-              ]}
+              items={
+                userRole?.roleName === "admin"
+                  ? [
+                      {
+                        key: "dashboard/admin",
+                        icon: <HomeOutlined />,
+                        label: "Admin Dashboard",
+                      },
+                    ]
+                  : [
+                      {
+                        key: "dashboard",
+                        icon: <HomeOutlined />,
+                        label: "Dashboard",
+                      },
+                      {
+                        key: "dashboard/data",
+                        icon: <ClockCircleOutlined />,
+                        label: "Data",
+                      },
+                      {
+                        key: "dashboard/profile",
+                        icon: <UserOutlined />,
+                        label: "Profile",
+                      },
+                    ]
+              }
             />
           </div>
 
