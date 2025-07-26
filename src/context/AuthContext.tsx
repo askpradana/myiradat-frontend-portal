@@ -7,7 +7,7 @@ import { useLogoutService } from "@/lib/fetcher/LogoutService";
 import { useRouter } from "next/navigation";
 
 type Role = {
-  serviceName: string;
+  serviceCode: string;
   roleName: string;
 };
 
@@ -24,10 +24,10 @@ type AuthContextType = {
   loading: boolean;
 };
 
-type MyJwtPayload = {
+export type MyJwtPayload = {
   email: string;
   services: {
-    serviceName: string;
+    serviceCode: string;
     roleName: string;
   }[];
   exp: number;

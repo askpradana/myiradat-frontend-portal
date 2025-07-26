@@ -71,6 +71,9 @@ async function fetcher<T>(
       body: method === "GET" ? undefined : payload,
     });
 
+    console.log(res);
+    
+
     const contentType = res.headers.get("Content-Type");
     const data = contentType?.includes("application/json")
       ? await res.json()
