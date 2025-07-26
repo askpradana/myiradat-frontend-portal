@@ -24,10 +24,10 @@ export default function DashboardView() {
                     {service.roleName}
                   </div>
                   <div className="text-xl font-semibold text-black">
-                    {service.serviceName}
+                    {service.serviceCode}
                   </div>
                 </div>
-                {service.serviceName == "Dashboard" && (
+                {service.serviceCode == "DASHBOARD" && (
                   <Avatar
                     shape="square"
                     style={{ background: "#8280FF26", color: "#3D42DF" }}
@@ -35,7 +35,7 @@ export default function DashboardView() {
                     icon={<PieChartFilled />}
                   />
                 )}
-                {service.serviceName == "IPROB" && (
+                {service.serviceCode == "IPROB" && (
                   <Avatar
                     shape="square"
                     style={{ background: "#FEC53D26", color: "#FEC53D" }}
@@ -43,7 +43,7 @@ export default function DashboardView() {
                     icon={<DatabaseFilled />}
                   />
                 )}
-                {service.serviceName == "IPROS" && (
+                {service.serviceCode == "IPROS" && (
                   <Avatar
                     shape="square"
                     style={{ background: "#4AD99126", color: "#4AD991" }}
@@ -51,7 +51,7 @@ export default function DashboardView() {
                     icon={<ProductFilled />}
                   />
                 )}
-                {service.serviceName == "Improve Care" && (
+                {service.serviceCode == "IMPCARE" && (
                   <Avatar
                     shape="square"
                     style={{ background: "#87d06826", color: "#87d068" }}

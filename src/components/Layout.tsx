@@ -110,7 +110,7 @@ export default function DashboardLayout({
                     ]
                   : [
                       {
-                        key: "dashboard",
+                        key: "dashboard/service",
                         icon: <HomeOutlined />,
                         label: "Dashboard",
                       },
