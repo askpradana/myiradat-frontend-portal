@@ -1,4 +1,4 @@
-import { Avatar, Button, Card, Col, Form, Input, Row } from "antd";
+import { Avatar, Button, Card, Col, Form, Input, Row , FormInstance} from "antd";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
@@ -12,17 +12,18 @@ export interface UserType {
 
 interface DetailUserProps {
   user: UserType;
+  form: FormInstance;
   isEdit?: boolean;
   url?: string;
 }
 
 const DetailUser: React.FC<DetailUserProps> = ({
   user,
+  form,
   isEdit = false,
   url,
 }) => {
   const router = useRouter();
-  const [form] = Form.useForm();
 
   const handleEdit = () => {
     if (isEdit && url) {

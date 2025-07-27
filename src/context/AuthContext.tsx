@@ -54,13 +54,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const logout = async () => {
     try {
-      await logoutApi(); // panggil API /auth/logout
+      await logoutApi();
     } catch (err) {
       console.error("Logout API failed", err);
     } finally {
-      clearTokens(); // hapus dari localStorage
+      clearTokens();
       setUser(null);
-      router.push("/login"); // redirect ke halaman login
+      router.push("/login");
     }
   };
 
