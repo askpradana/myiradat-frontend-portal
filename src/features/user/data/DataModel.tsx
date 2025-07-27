@@ -31,7 +31,7 @@ export interface IproTest {
 
 export interface IprobTest {
   testTakenDate: string | null;
-  result: IprobResult;
+  result: IproResult;
 }
 
 export interface IprosTest {

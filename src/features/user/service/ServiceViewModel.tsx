@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useServiceService } from "./ServiceService";
-import { UserProfileResponse } from "./ServiceModel";
+import { UserProfileResponse } from "@/features/user/profile/ProfileModel";
 import { useLoading } from "@/context/LoadingContext";
 import { useModal } from "@/context/ModalContext";
 

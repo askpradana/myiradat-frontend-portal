@@ -47,11 +47,11 @@ const DataView = () => {
       layout="horizontal"
       column={1}
       className="custom-description"
-      labelStyle={{
+      styles={{ label: {
         fontWeight: "bold",
         textTransform: "capitalize",
         width: 200,
-      }}
+      } }}
     >
       <Descriptions.Item label="Tanggal Tes" className="bg-green-100">
         {dayjs(testDate).format("DD MMMM YYYY")}
@@ -90,7 +90,7 @@ const DataView = () => {
       <Card title="IPROB" className="shadow-md" style={{ marginTop: "24px" }}>
         {data?.tests.iprob &&
           renderResultDescription(
-            data.tests.iprob.result,
+            data.tests.iprob.result as unknown as Record<string, string>,
             data.tests.iprob.testTakenDate
           )}
       </Card>

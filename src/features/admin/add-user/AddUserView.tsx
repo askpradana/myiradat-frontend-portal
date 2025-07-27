@@ -1,4 +1,15 @@
-import { Form, Input, Button, Checkbox, Select, Card, Row, Col } from "antd";
+import {
+  Form,
+  Input,
+  Button,
+  Checkbox,
+  Select,
+  Card,
+  Row,
+  Col,
+  Typography,
+} from "antd";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const { Option } = Select;
@@ -53,6 +64,7 @@ const availableServices: ServiceOption[] = [
 const UserForm = () => {
   const [form] = Form.useForm();
   const [selectedServices, setSelectedServices] = useState<number[]>([]);
+  const router = useRouter();
 
   const onFinish = (values: FormFields) => {
     const finalData: FormValues = {
@@ -70,7 +82,7 @@ const UserForm = () => {
   };
 
   return (
-    <Card title="Tambah User" className="shadow-md">
+    <Card className="shadow-md" title="TAMBAH USER">
       <Form
         form={form}
         layout="vertical"
@@ -136,11 +148,7 @@ const UserForm = () => {
         <Form.Item label="Layanan">
           <Row gutter={[16, 0]}>
             {availableServices.map((service) => (
-              <Col
-                md={6}
-                xs={24}
-                key={service.serviceId}
-              >
+              <Col md={6} xs={24} key={service.serviceId}>
                 <Checkbox
                   checked={selectedServices.includes(service.serviceId)}
                   onChange={(e) => {
@@ -177,12 +185,22 @@ const UserForm = () => {
           </Row>
         </Form.Item>
 
-        <Row justify="end" className="mt-4">
+        <Row className="mt-10">
           <Col>
-            <Form.Item>
-              <Button type="primary" htmlType="submit">
-                Simpan
-              </Button>
+            <Form.Item className="w-100">
+              <div className="flex justify-end gap-4">
+                <Button
+                  color="danger"
+                  variant="solid"
+                  className="w-30"
+                  onClick={() => router.back()}
+                >
+                  Back
+                </Button>
+                <Button type="primary" htmlType="submit" className="w-30">
+                  Simpan
+                </Button>
+              </div>
             </Form.Item>
           </Col>
         </Row>

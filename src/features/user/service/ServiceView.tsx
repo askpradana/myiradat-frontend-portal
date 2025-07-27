@@ -17,7 +17,7 @@ export default function ServiceView() {
         {data?.services?.map((service, index) => (
           <Col key={index} md={12} xs={24} lg={8}>
             <Card
-              className="shadow-md"
+              className="shadow-md hover:shadow-lg transition cursor-pointer"
             >
               <div className="flex justify-between items-center">
                 <div>

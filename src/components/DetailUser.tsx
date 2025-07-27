@@ -1,4 +1,14 @@
-import { Avatar, Button, Card, Col, Form, Input, Row , FormInstance} from "antd";
+import {
+  Avatar,
+  Button,
+  Card,
+  Col,
+  Form,
+  Input,
+  Row,
+  FormInstance,
+  Typography,
+} from "antd";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
@@ -15,10 +25,12 @@ interface DetailUserProps {
   form: FormInstance;
   isEdit?: boolean;
   url?: string;
+  title?: string;
 }
 
 const DetailUser: React.FC<DetailUserProps> = ({
   user,
+  title = "PROFILE",
   form,
   isEdit = false,
   url,
@@ -44,16 +56,29 @@ const DetailUser: React.FC<DetailUserProps> = ({
   return (
     <>
       {/* Card 1: Header & Summary */}
-      <Card className="shadow-md">
-        <div className="flex justify-between items-start mb-6">
-          <h2 className="text-3xl font-bold">Profil</h2>
-          {isEdit && (
-            <Button type="primary" className="w-40" onClick={handleEdit}>
-              Edit
+      <Card
+        className="shadow-md"
+        title={
+          <div className="flex justify-between items-start gap-4">
+            <Typography.Title level={4} className="mb-0">{title}</Typography.Title>
+            <div className="flex justify-between items-start gap-4">
+            {isEdit && (
+              <Button type="primary" className="w-30" onClick={handleEdit}>
+                Edit
+              </Button>
+            )}
+            <Button
+              color="danger"
+              variant="solid"
+              className="w-30"
+              onClick={() => router.back()}
+            >
+              Back
             </Button>
-          )}
-        </div>
-
+            </div>
+          </div>
+        }
+      >
         <div className="flex items-center gap-4">
           <Avatar size={80} src={user.avatarUrl} />
           <div>
