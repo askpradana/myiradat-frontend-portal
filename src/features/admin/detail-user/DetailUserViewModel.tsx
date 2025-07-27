@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useProfileService } from "./ProfileService";
+import { useDetailUserService } from "./DetailUserService";
 import { useLoading } from "@/context/LoadingContext";
 import { useModal } from "@/context/ModalContext";
 import { Form } from "antd";
 import { UserType } from "@/components/DetailUser";
+import { useParams } from "next/navigation";
 
 const UserIntialValue: UserType = {
   id: 0,
@@ -15,18 +16,24 @@ const UserIntialValue: UserType = {
   avatarUrl: "",
 };
 
-export function useProfileViewModel() {
-  const { getDetail } = useProfileService();
+export function useDetailUserViewModel() {
+  const { getDetailUser } = useDetailUserService();
   const { setLoading } = useLoading();
   const { showError } = useModal();
   const [user, setUser] = useState<UserType>(UserIntialValue);
   const [form] = Form.useForm();
+  const params = useParams();
+  const id = Number(params.userId);
 
   useEffect(() => {
     const fetchDetail = async () => {
       setLoading(true);
+      
       try {
-        const response = await getDetail();
+        const response = await getDetailUser({ id: id });
+
+        console.log(response);
+        
         setUser({
           id: response.data?.id,
           email: response.data?.email,

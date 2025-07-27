@@ -1,21 +1,10 @@
 import DetailUser from "@/components/DetailUser";
+import { useProfileViewModel } from "./ProfileViewModel";
 
 const ProfileView = () => {
-  const user = {
-    id: 1,
-    name: "Alexa Rawles",
-    email: "alexarawles@gmail.com",
-    no_hp: "08123456789",
-    avatarUrl: "/avatar-placeholder.png", // ganti dengan URL gambar nyata jika ada
-  };
+  const { user, form } = useProfileViewModel();
 
-  return (
-    <DetailUser
-    user={user}
-    isEdit
-    url="/dashboard/profile/edit"
-    />
-  );
+  return <DetailUser user={user} form={form} isEdit url="/dashboard/profile/edit" />;
 };
 
 export default ProfileView;

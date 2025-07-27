@@ -7,16 +7,17 @@ import {
   PieChartFilled,
   ProductFilled,
 } from "@ant-design/icons";
-import { useAuth } from "@/context/AuthContext";
+import { useServiceViewModel } from "./ServiceViewModel";
 
-export default function DashboardView() {
-  const { user } = useAuth();
+export default function ServiceView() {
+  const { data } = useServiceViewModel();
+
   return (
       <Row gutter={[16, 24]}>
-        {user?.services?.map((service, index) => (
+        {data?.services?.map((service, index) => (
           <Col key={index} md={12} xs={24} lg={8}>
             <Card
-              className="shadow-md"
+              className="shadow-md hover:shadow-lg transition cursor-pointer"
             >
               <div className="flex justify-between items-center">
                 <div>

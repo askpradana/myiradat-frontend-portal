@@ -1,15 +1,10 @@
 import DetailUser from "@/components/DetailUser";
+import { useDetailUserViewModel } from "./DetailUserViewModel";
 
 const DetailUserView = () => {
-  const user = {
-    id: 1,
-    name: "Alexa Rawles",
-    email: "alexarawles@gmail.com",
-    no_hp: "08123456789",
-    avatarUrl: "/avatar-placeholder.png", // ganti dengan URL gambar nyata jika ada
-  };
+  const { user, form } = useDetailUserViewModel();
 
-  return <DetailUser user={user} isEdit={false}/>;
+  return <DetailUser user={user} form={form} title="DETAIL USER" />;
 };
 
 export default DetailUserView;
