@@ -1,9 +1,9 @@
 'use client';
 
-import { UserProfileResponse } from './ProfileModel';
+import { UserProfileResponse } from './ServiceModel';
 import { useFetcher } from '@/lib/fetcher/fetcher';
 
-export function useProfileService() {
+export function useServiceService() {
   const { fetcher } = useFetcher();
 
   const getDetail = async () => {

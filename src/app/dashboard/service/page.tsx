@@ -1,10 +1,10 @@
 "use client";
 
-import DashboardView from "@/features/user/dashboard/DashboardView";
+import ServiceView from "@/features/user/service/ServiceView";
 
-export default function DashboardPage() {
+export default function ServicePage() {
 
   return (
-    <DashboardView/>
+    <ServiceView/>
   );
 }

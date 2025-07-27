@@ -4,7 +4,8 @@ import { getAccessToken } from "@/lib/token";
 import { useLoading } from "@/context/LoadingContext";
 import { useModal } from "@/context/ModalContext";
 
-const API_BASE = process.env.NEXT_PUBLIC_AUTH_BASE_URI;
+const AUTH_URI = process.env.NEXT_PUBLIC_AUTH_BASE_URI;
+const USER_URI = process.env.NEXT_PUBLIC_USER_BASE_URI;
 
 export function useFetcher() {
   const { setLoading } = useLoading();
@@ -16,7 +17,7 @@ async function fetcher<T>(
     method = "GET",
     body,
     headers = {},
-    usingBase = true,
+    baseUri = "USER_URI",
     usingFormData = false,
     auth = true,
     showSuccess: showSuccessFlag = false,
@@ -26,7 +27,7 @@ async function fetcher<T>(
     method?: "GET" | "POST" | "PUT" | "DELETE";
     body?: unknown;
     headers?: HeadersInit;
-    usingBase?: boolean;
+    baseUri?: "AUTH_URI" | "USER_URI";
     usingFormData?: boolean;
     auth?: boolean;
     showSuccess?: boolean;
@@ -37,7 +38,7 @@ async function fetcher<T>(
   setLoading(true);
 
   try {
-    const fullUrl = usingBase ? `${API_BASE}${url}` : url;
+    const fullUrl = baseUri == "USER_URI" ? `${USER_URI}${url}` : `${AUTH_URI}${url}`;
 
     const finalHeaders: Record<string, string> = {
       ...normalizeHeaders(headers),
@@ -70,9 +71,6 @@ async function fetcher<T>(
       headers: finalHeaders,
       body: method === "GET" ? undefined : payload,
     });
-
-    console.log(res);
-    
 
     const contentType = res.headers.get("Content-Type");
     const data = contentType?.includes("application/json")

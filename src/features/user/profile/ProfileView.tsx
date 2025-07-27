@@ -1,21 +1,17 @@
-import DetailUser from "@/components/DetailUser";
+import DetailUser, { UserType } from "@/components/DetailUser";
+import { useProfileViewModel } from "./ProfileViewModel";
 
 const ProfileView = () => {
-  const user = {
-    id: 1,
-    name: "Alexa Rawles",
-    email: "alexarawles@gmail.com",
-    no_hp: "08123456789",
-    avatarUrl: "/avatar-placeholder.png", // ganti dengan URL gambar nyata jika ada
+  const { data } = useProfileViewModel();
+  const user: UserType = {
+    id: data?.id,
+    email: data?.email,
+    name: data?.name,
+    noHp: data?.noHp,
+    avatarUrl: ''
   };
 
-  return (
-    <DetailUser
-    user={user}
-    isEdit
-    url="/dashboard/profile/edit"
-    />
-  );
+  return <DetailUser user={user} isEdit url="/dashboard/profile/edit" />;
 };
 
 export default ProfileView;

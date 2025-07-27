@@ -1,16 +1,17 @@
 import { Avatar, Button, Card, Col, Form, Input, Row } from "antd";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  no_hp: string;
-  avatarUrl: string;
+export interface UserType {
+  id: number | undefined;
+  name: string | undefined;
+  email: string | undefined;
+  noHp: string | undefined;
+  avatarUrl: string | undefined;
 }
 
 interface DetailUserProps {
-  user: User;
+  user: UserType;
   isEdit?: boolean;
   url?: string;
 }
@@ -21,6 +22,7 @@ const DetailUser: React.FC<DetailUserProps> = ({
   url,
 }) => {
   const router = useRouter();
+  const [form] = Form.useForm();
 
   const handleEdit = () => {
     if (isEdit && url) {
@@ -28,8 +30,15 @@ const DetailUser: React.FC<DetailUserProps> = ({
     }
   };
 
-  console.log(isEdit, "INI ISEDIT");
-  
+  useEffect(() => {
+    if (user) {
+      form.setFieldsValue({
+        name: user.name,
+        noHp: user.noHp,
+        email: user.email,
+      });
+    }
+  }, [user, form]);
 
   return (
     <>
@@ -49,30 +58,22 @@ const DetailUser: React.FC<DetailUserProps> = ({
           <div>
             <h3 className="text-xl font-semibold">{user.name}</h3>
             <p className="text-gray-500">{user.email}</p>
-            <p className="text-gray-500">{user.no_hp}</p>
+            <p className="text-gray-500">{user.noHp}</p>
           </div>
         </div>
       </Card>
 
       {/* Card 2: Form Detail */}
-      <Card className="shadow-md" style={{marginTop: "24px"}}>
-        <Form
-          layout="vertical"
-          initialValues={{
-            fullName: user.name,
-            email: user.email,
-            no_hp: user.no_hp,
-          }}
-          disabled
-        >
+      <Card className="shadow-md" style={{ marginTop: "24px" }}>
+        <Form layout="vertical" disabled form={form}>
           <Row gutter={[16, 16]}>
             <Col md={12} xs={24}>
-              <Form.Item label="Full Name" name="fullName">
+              <Form.Item label="Full Name" name="name">
                 <Input size="large" />
               </Form.Item>
             </Col>
             <Col md={12} xs={24}>
-              <Form.Item label="No. Handno_hp" name="no_hp">
+              <Form.Item label="No. Handphone" name="noHp">
                 <Input size="large" />
               </Form.Item>
             </Col>

@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useProfileService } from "./ProfileService";
-import { UserProfileResponse } from "./ProfileModel";
+import { useDataService } from "./DataService";
+import { UserProfileResponse } from "./DataModel";
 import { useLoading } from "@/context/LoadingContext";
 import { useModal } from "@/context/ModalContext";
 
-export function useProfileViewModel() {
-  const { getDetail } = useProfileService();
+export function useDataViewModel() {
+  const { getDetail } = useDataService();
   const { setLoading } = useLoading();
   const { showError } = useModal();
   const [data, setData] = useState<UserProfileResponse["data"] | null>(null);
