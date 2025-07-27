@@ -12,11 +12,11 @@ const DataView = () => {
       bordered
       size="small"
       column={1}
-      labelStyle={{
+      styles={{ label: {
         fontWeight: "bold",
         textTransform: "capitalize",
         width: 200,
-      }}
+      } }}
     >
       <Descriptions.Item label="Tanggal Konsultasi" className="bg-green-100">
         {consults.consultDate

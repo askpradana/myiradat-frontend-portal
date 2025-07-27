@@ -40,6 +40,7 @@ export function useFetcher() {
       showSuccess: showSuccessFlag = false,
       showError: showErrorFlag = false,
       autoStopLoading = true,
+      disableLoading = false,
     }: {
       method?: "GET" | "POST" | "PUT" | "DELETE";
       body?: unknown;
@@ -50,9 +51,10 @@ export function useFetcher() {
       showSuccess?: boolean;
       showError?: boolean;
       autoStopLoading?: boolean;
+      disableLoading?: boolean;
     } = {}
   ): Promise<T> {
-    setLoading(true);
+    if (!disableLoading) setLoading(true);
 
     try {
       const fullUrl =
@@ -77,9 +79,7 @@ export function useFetcher() {
           if (body instanceof FormData) {
             payload = body;
           } else {
-            throw new Error(
-              "Body must be FormData when usingFormData is true."
-            );
+            throw new Error("Body must be FormData when usingFormData is true.");
           }
         } else {
           payload = JSON.stringify(body);
@@ -98,8 +98,8 @@ export function useFetcher() {
         : await res.text();
 
       if (!res.ok) {
-        if (res.status == 401) {
-          handleUnauthorized()
+        if (res.status === 401) {
+          handleUnauthorized();
         }
 
         if (showErrorFlag) {
@@ -111,7 +111,9 @@ export function useFetcher() {
 
       return data as T;
     } finally {
-      if (autoStopLoading) setLoading(false);
+      if (!disableLoading && autoStopLoading) {
+        setLoading(false);
+      }
     }
   }
 

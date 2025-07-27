@@ -10,8 +10,7 @@ export function useProfileService() {
     return fetcher<UserProfileResponse>(`/profiles/me/detail`, {
       method: 'GET',
       baseUri: "USER_URI",
-      auth: true    ,
-      autoStopLoading: true
+      auth: true,
     });
   };
 
