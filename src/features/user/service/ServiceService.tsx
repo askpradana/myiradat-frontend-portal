@@ -1,6 +1,6 @@
 'use client';
 
-import { UserProfileResponse } from './ServiceModel';
+import { UserProfileResponse } from '../profile/ProfileModel';
 import { useFetcher } from '@/lib/fetcher/fetcher';
 
 export function useServiceService() {

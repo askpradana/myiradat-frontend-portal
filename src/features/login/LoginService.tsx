@@ -11,7 +11,8 @@ export function useLoginService() {
       method: 'POST',
       body: payload,
       auth: false,
-      autoStopLoading: false
+      autoStopLoading: false,
+      baseUri: "AUTH_URI"
     });
   };
 

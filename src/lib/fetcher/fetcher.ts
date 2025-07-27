@@ -3,15 +3,30 @@
 import { getAccessToken, clearTokens } from "@/lib/token";
 import { useLoading } from "@/context/LoadingContext";
 import { useModal } from "@/context/ModalContext";
-import { useRouter } from "next/navigation";
+import { modalController } from "@/context/modalController";
 
 const AUTH_URI = process.env.NEXT_PUBLIC_AUTH_BASE_URI;
 const USER_URI = process.env.NEXT_PUBLIC_USER_BASE_URI;
 
+let isHandling401 = false;
+
+export function handleUnauthorized() {
+  if (isHandling401) return;
+  isHandling401 = true;
+
+  clearTokens();
+  modalController.showError("Sesi Anda telah habis. Silakan login kembali.");
+
+  setTimeout(() => {
+    modalController.closeModal();
+    window.location.href = "/login";
+    isHandling401 = false;
+  }, 2000);
+}
+
 export function useFetcher() {
   const { setLoading } = useLoading();
   const { showSuccess, showError } = useModal();
-  const router = useRouter();
 
   async function fetcher<T>(
     url: string,
@@ -62,7 +77,9 @@ export function useFetcher() {
           if (body instanceof FormData) {
             payload = body;
           } else {
-            throw new Error("Body must be FormData when usingFormData is true.");
+            throw new Error(
+              "Body must be FormData when usingFormData is true."
+            );
           }
         } else {
           payload = JSON.stringify(body);
@@ -81,17 +98,13 @@ export function useFetcher() {
         : await res.text();
 
       if (!res.ok) {
-        if (res.status === 401) {
-          clearTokens();
-          router.replace("/login");
-          return Promise.reject(new Error("Unauthorized"));
+        if (res.status == 401) {
+          handleUnauthorized()
         }
 
         if (showErrorFlag) {
           showError(data?.message || "Something went wrong");
         }
-
-        throw new Error(data?.message || "API error");
       }
 
       if (showSuccessFlag) showSuccess("Success");

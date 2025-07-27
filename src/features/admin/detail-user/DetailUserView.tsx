@@ -5,7 +5,7 @@ const DetailUserView = () => {
     id: 1,
     name: "Alexa Rawles",
     email: "alexarawles@gmail.com",
-    no_hp: "08123456789",
+    noHp: "08123456789",
     avatarUrl: "/avatar-placeholder.png", // ganti dengan URL gambar nyata jika ada
   };
 

@@ -1,13 +1,13 @@
 'use client';
 
-import { UserProfileResponse } from './DataModel';
+import { ProfileSummaryResponse } from './DataModel';
 import { useFetcher } from '@/lib/fetcher/fetcher';
 
 export function useDataService() {
   const { fetcher } = useFetcher();
 
   const getDetail = async () => {
-    return fetcher<UserProfileResponse>(`/profiles/me/detail`, {
+    return fetcher<ProfileSummaryResponse>(`/profiles/me/summary`, {
       method: 'GET',
       baseUri: "USER_URI",
       auth: true    ,
