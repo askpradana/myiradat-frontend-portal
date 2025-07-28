@@ -15,7 +15,8 @@ export default function AdminDashboardPage() {
     if (!loading && isAuthenticated && role?.roleName !== "admin") {
       router.replace("/dashboard/service"); // Redirect kalau bukan admin
     }
-  }, [loading, isAuthenticated, user]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (loading || !isAuthenticated) return null;
 
