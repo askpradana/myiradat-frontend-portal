@@ -2,11 +2,23 @@
 
 import { Form, Input, Checkbox, Button, Typography } from 'antd';
 import { useLoginViewModel } from './LoginViewModel';
+import { useEffect, useState } from 'react';
 
 const { Title, Text, Link } = Typography;
 
 export default function LoginPage() {
   const { form, onSubmit } = useLoginViewModel();
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+
+  const email = Form.useWatch('email', form);
+  const password = Form.useWatch('password', form);
+
+  useEffect(() => {
+  const isEmailFilled = !!email;
+  const isPasswordValid = password && password.length >= 8;
+  setIsButtonDisabled(!(isEmailFilled && isPasswordValid));
+}, [email, password]);
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
@@ -21,11 +33,13 @@ export default function LoginPage() {
 
         {/* Title */}
         <div className="text-center mb-6">
-          <Title level={4} style={{marginBottom : '0'}}>Log in to your account</Title>
+          <Title level={4} style={{ marginBottom: '0' }}>
+            Log in to your account
+          </Title>
           <Text type="secondary">Welcome back! Please enter your details.</Text>
         </div>
 
-        {/* Form (Controlled by AntD) */}
+        {/* Form */}
         <Form
           form={form}
           layout="vertical"
@@ -36,7 +50,7 @@ export default function LoginPage() {
             label="Email"
             name="email"
             rules={[
-              { required: true, message: 'Please enter your email' },
+              { required: false, message: 'Please enter your email' },
               { type: 'email', message: 'Invalid email format' },
             ]}
           >
@@ -46,13 +60,13 @@ export default function LoginPage() {
           <Form.Item
             label="Password"
             name="password"
-            rules={[{ required: true, message: 'Please enter your password' }]}
+            rules={[{ required: false, message: 'Please enter your password' }]}
           >
             <Input.Password placeholder="Enter your password" size="large" />
           </Form.Item>
 
           <div className="flex justify-between items-center mb-4">
-           <Form.Item name="remember" valuePropName="checked" noStyle>
+            <Form.Item name="remember" valuePropName="checked" noStyle>
               <Checkbox>Remember</Checkbox>
             </Form.Item>
             <Link href="#" className="text-green-600 text-sm">
@@ -67,11 +81,9 @@ export default function LoginPage() {
               size="large"
               className="mb-4"
               block
+              disabled={isButtonDisabled}
             >
-              Confirm
-            </Button>
-            <Button size="large" htmlType="button" block>
-              Cancel
+              Login
             </Button>
           </Form.Item>
         </Form>
