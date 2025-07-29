@@ -32,8 +32,7 @@ export function useAdminDashboardViewModel(
     };
 
     fetchProfiles();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [params]);
 
   const handleSearchChange = (value: string) => {
     setLocalSearch(value); // hanya ubah input, tidak fetch
