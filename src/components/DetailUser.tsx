@@ -80,7 +80,7 @@ const DetailUser: React.FC<DetailUserProps> = ({
         }
       >
         <div className="flex items-center gap-4">
-          <Avatar size={80} src={user.avatarUrl} />
+          <Avatar size={80} src={user.avatarUrl || null} />
           <div>
             <h3 className="text-xl font-semibold">{user.name}</h3>
             <p className="text-gray-500">{user.email}</p>

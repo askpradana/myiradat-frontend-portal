@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 type SectionData = {
   title: string;
   subTitle: string;
@@ -71,9 +73,11 @@ export default function ThreeSections() {
 
                 {/* Image */}
                 <div className={`${isEven ? "md:order-1" : ""}`}>
-                  <img
-                    src={item.imageSrc}
+                  <Image
+                    src={item.imageSrc || "https://placehold.co/600x400"} 
                     alt={item.altText}
+                    width={500} 
+                    height={300}
                     className="w-full max-w-md md:max-w-full mx-auto rounded-xl shadow-lg object-cover"
                   />
                 </div>
