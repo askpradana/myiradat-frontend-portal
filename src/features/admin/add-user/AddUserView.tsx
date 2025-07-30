@@ -7,7 +7,7 @@ import {
   Card,
   Row,
   Col,
-  Typography,
+  // Typography,
 } from "antd";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
